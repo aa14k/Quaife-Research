@@ -3,8 +3,8 @@
 
 function [X,Y] = center_generator(r,N,xl,xr,yb,yt,R)
 R = R-r;
-X = zeros(N,1);
-Y = zeros(N,1); 
+X = xl + (xr-xl)*rand(N,1);
+Y = yb + (yt-yb)*rand(N,1); 
 X(1) = xl + (xr-xl)*rand();
 Y(1) = yb + (yt-yb)*rand();
 while X(1)^2 + Y(1)^2 > R^2
@@ -12,7 +12,6 @@ while X(1)^2 + Y(1)^2 > R^2
     Y(1) = yb + (yt-yb)*rand();
 end
 i = 2;
-l = 1;
 while(i<(N+1))
     x = xl + (xr-xl)*rand();
     y = yb + (yt-yb)*rand();
