@@ -20,7 +20,7 @@ while(i<(N+1))
         for j=1:i
             distance(j) = sqrt((x-X(j))^2 + (y-Y(j))^2);
         end
-        disTest = distance < r;
+        disTest = distance < r*2;
         if sum(disTest) == 0
             X(i) = x;
             Y(i) = y;
@@ -30,4 +30,3 @@ while(i<(N+1))
 end
 
 end
-
