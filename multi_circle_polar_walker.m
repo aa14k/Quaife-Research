@@ -28,8 +28,8 @@ geom2 = r2(theta).*exp(1i*theta);
 
 
 
-nx = 300; %number of points in the x direction
-ny = 300; %number of points in the y direction
+nx = 400; %number of points in the x direction
+ny = 400; %number of points in the y direction
 
 
 [x,y] = meshgrid(linspace(xmin,xmax,nx),linspace(ymin,ymax,ny));
@@ -91,8 +91,8 @@ for k = 1:numel(init_pts)%iterate over each of the nx by ny inital pts
       end
 end
 
-ss = find(mfpt < 0.001);
-mfpt(ss) = -100.0;
+ss = find(mfpt < 0.01*dt);
+mfpt(ss) = 1/0;
 mfpt = reshape(mfpt,ny,nx);
 
 clf;
@@ -101,12 +101,12 @@ colorbar
 view(2); shading interp;
 axis equal; hold on
 for i=1:N
-    plot3(real(geoms(:,i)),imag(geoms(:,i)),1000*ones(size(geom2)),'k','linewidth',2)
+    fill(real(geoms(:,i)),imag(geoms(:,i)),'k');
+
 end
-plot3(real(geom2),imag(geom2),1000*ones(size(geom2)),'k','linewidth',2)
+plot3(real(geom2),imag(geom2),1000*ones(size(geom2)),'k','linewidth',2, 'Color', 'k')
 
-grid on
- 
+grid off
 axis([xmin xmax ymin ymax])
+set(gca,'visible', 'off'); 
 hold off
-
