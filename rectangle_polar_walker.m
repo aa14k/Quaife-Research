@@ -59,10 +59,6 @@ for k = 1:numel(init_pts)%iterate over each of the nx by ny inital pts
       for i=2:N
           dist = min( dist, abs(z - centers(i)));
       end
-          %dist = min(abs(z-centers(1, 1)), abs(z-centers(2, 1)), abs(z-centers(3, 1)));%sqrt(real(z).^2+imag(z).^2); %since our absorbing circle is the circle with center at the origin
-      
-      %[inds, dist] = dsearchn(centers, z);
-      %dist = abs(dist);
       
       fpt = zeros(nruns,1);
       % min_dist.m
